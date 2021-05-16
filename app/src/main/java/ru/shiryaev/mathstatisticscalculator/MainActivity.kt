@@ -9,7 +9,6 @@ import ru.shiryaev.mathstatisticscalculator.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mVpAdapter: ViewPagerAdapter
 
     private val titles = listOf(
         "Описательная статистика",
@@ -22,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mVpAdapter = ViewPagerAdapter(this)
-        binding.viewPager.adapter = mVpAdapter
+        binding.viewPager.adapter = ViewPagerAdapter(this)
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = titles[position]
