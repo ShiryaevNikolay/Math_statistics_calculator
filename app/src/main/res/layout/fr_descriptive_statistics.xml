@@ -3,7 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import alias="V" type="android.view.View"/>
 
+        <variable
+            name="customStep"
+            type="java.lang.Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,38 +15,27 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/interval_cb"
+            android:id="@+id/custom_step_cb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Интервалы"
+            android:text="Установить свой шаг интервала"
+            android:checked="@={customStep}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/intervals_ll"
-            android:layout_width="match_parent"
+        <ru.shiryaev.mathstatisticscalculator.views.CounterView
+            android:id="@+id/step_interval_cv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:visibility="@{customStep ? V.VISIBLE : V.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/interval_cb">
-
-            <ru.shiryaev.mathstatisticscalculator.views.CounterView
-                android:id="@+id/start_interval_cv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:title="Начало интервала"
-                android:layout_weight="1"/>
-
-            <ru.shiryaev.mathstatisticscalculator.views.CounterView
-                android:id="@+id/step_interval_cv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:title="Шаг интервала"
-                android:layout_weight="1"/>
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/custom_step_cb"
+            app:title="Шаг интервала" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -50,7 +43,7 @@
             app:layout_constraintBottom_toTopOf="@+id/calculate_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/intervals_ll">
+            app:layout_constraintTop_toBottomOf="@+id/step_interval_cv">
 
             <ru.shiryaev.mathstatisticscalculator.views.TextField
                 android:id="@+id/sample_input_tf"

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Math Statistics Calculator</string>
+    <string name="average">Среднее выборочное = %f</string>
+    <string name="dispersion">Выборочная дисперсия = %f</string>
+    <string name="fashion">Мода = %f</string>
+    <string name="median">Медиана = %f</string>
 </resources>
