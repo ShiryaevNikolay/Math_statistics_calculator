@@ -19,23 +19,20 @@ class CalculateData(
         val countIntervals = (1 + 3.322 * log10(samples.size.toDouble())).toInt()
         val stepInterval = if(customStep) stepIntervalInput else (samples.maxOrNull()!! - samples.minOrNull()!!) / countIntervals
 
-        val sizeIntervals = 2 + (samples.maxOrNull()!! - samples.minOrNull()!!) / stepInterval
-
         var a = startInterval
         var b = a + stepInterval
 
-        // Среднее выборочное
-        var xAverange = 0f
+        val listVariationRange: MutableList<RowVariationRange> = mutableListOf()
 
-        // Накопленная частность
-        var accumFrequency = 0f
+        var xAverage = 0f  // Среднее выборочное
+        var accumFrequency = 0f  // Накопленная частность
 
-        val listVariationRange: List<RowVariationRange> = List(sizeIntervals) {
+        while (a <= samples.maxOrNull()!!) {
             val interval = RowVariationRange.Interval(a, b)
 
             var frequency = 0
-            samples.forEach { variable ->
-                if(variable >= interval.min && variable < interval.max) frequency++
+            samples.forEach { value ->
+                if(value >= interval.min && value < interval.max) frequency++
             }
             val relativeFrequency: Float = frequency.toFloat() / sizeSamples.toFloat()
             accumFrequency += relativeFrequency
@@ -44,13 +41,13 @@ class CalculateData(
                 (interval.max - interval.min).toFloat() / 2
             } else interval.min.toFloat()
 
-            xAverange += xi * relativeFrequency
+            xAverage += xi * relativeFrequency
 
             // Меняем интервалы
             a = b
             b += stepInterval
 
-            RowVariationRange(interval, frequency, relativeFrequency, accumFrequency)
+            listVariationRange.add(RowVariationRange(interval, frequency, relativeFrequency, accumFrequency))
         }
 
         var dispersion = 0f
@@ -61,10 +58,8 @@ class CalculateData(
             val midpointInterval: Float = if(stepInterval != 1) {
                 (rowVariationRange.interval.max + rowVariationRange.interval.min - 1).toFloat() / 2
             } else rowVariationRange.interval.min.toFloat()
-            dispersion += (midpointInterval - xAverange).pow(2) * rowVariationRange.relativeFrequency
+            dispersion += (midpointInterval - xAverage).pow(2) * rowVariationRange.relativeFrequency
         }
-
-        dispersion /= sizeSamples
 
         // Получаем максимальную частоту вариационного ряда
         val maxFrequency = listVariationRange.maxByOrNull { it.frequency }
@@ -79,7 +74,7 @@ class CalculateData(
         }
 
         sampleData = SampleData(
-            xAverange,
+            xAverage,
             dispersion,
             fashion,
             median,

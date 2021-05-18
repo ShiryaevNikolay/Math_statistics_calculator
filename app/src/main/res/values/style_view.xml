@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="TextFieldStyle" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/text_field_selector</item>
+        <item name="android:background">@drawable/text_field_bg</item>
 
         <item name="android:padding">16dp</item>
     </style>
