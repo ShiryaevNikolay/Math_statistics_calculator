@@ -4,6 +4,6 @@
     <string name="dispersion">Выборочная дисперсия = %f</string>
     <string name="fashion">Мода = %f</string>
     <string name="median">Медиана = %f</string>
-    <string name="size">Размах = %f</string>
+    <string name="size">Размах = Xmax - Xmin + 1 = %f</string>
     <string name="coefficient_variation">Коэффициент вариации = %f</string>
 </resources>

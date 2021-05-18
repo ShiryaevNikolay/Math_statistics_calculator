@@ -27,7 +27,7 @@ class VariationsDataAdapter(
         }
     }
 
-    override fun getItemCount(): Int = listVariationData.size
+    override fun getItemCount(): Int = listVariationData.size + 1
 
     inner class Holder(private val itemViewBinding: ItemVariationDataBinding) : RecyclerView.ViewHolder(itemViewBinding.root) {
 
