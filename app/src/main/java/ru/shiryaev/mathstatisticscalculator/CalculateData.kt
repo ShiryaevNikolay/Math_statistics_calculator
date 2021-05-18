@@ -4,6 +4,7 @@ import ru.shiryaev.mathstatisticscalculator.data.RowVariationRange
 import ru.shiryaev.mathstatisticscalculator.data.SampleData
 import kotlin.math.log10
 import kotlin.math.pow
+import kotlin.math.sqrt
 
 class CalculateData(
     samples: List<Int>,
@@ -73,11 +74,16 @@ class CalculateData(
             median = calculateMedian(listVariationRange.size, listVariationRange)
         }
 
+        val coefficientVariation: Float = sqrt(dispersion) / xAverage * 100
+        val size = (samples.maxOrNull()!! - samples.minOrNull()!! + 1).toFloat()
+
         sampleData = SampleData(
             xAverage,
             dispersion,
             fashion,
             median,
+            size,
+            coefficientVariation,
             listVariationRange
         )
     }

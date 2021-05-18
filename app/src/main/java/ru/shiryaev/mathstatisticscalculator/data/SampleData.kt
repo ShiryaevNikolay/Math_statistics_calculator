@@ -7,5 +7,7 @@ data class SampleData(
     val variance: Float,
     val fashion: Float,
     val median: Float,
+    val size: Float,
+    val coefficientVariation: Float,
     val variationRange: List<RowVariationRange>
 ): Serializable

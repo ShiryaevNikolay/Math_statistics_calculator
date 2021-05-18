@@ -38,6 +38,8 @@ class ResultSample : Fragment() {
             dispersionTv.text = getString(R.string.dispersion, samplesData?.variance)
             fashionTv.text = getString(R.string.fashion, samplesData?.fashion)
             medianTv.text = getString(R.string.median, samplesData?.median)
+            sizeTv.text = getString(R.string.size, samplesData?.size)
+            coefficientVariationTv.text = getString(R.string.coefficient_variation, samplesData?.coefficientVariation)
             variationRv.layoutManager = LinearLayoutManager(requireContext())
             variationRv.adapter = VariationsDataAdapter(samplesData?.variationRange ?: emptyList())
         }
