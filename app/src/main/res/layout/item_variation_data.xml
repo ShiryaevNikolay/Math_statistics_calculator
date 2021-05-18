@@ -22,7 +22,7 @@
             tools:text="45-94" />
 
         <View
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/black" />
 
@@ -36,7 +36,7 @@
             tools:text="11" />
 
         <View
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/black" />
 
@@ -50,7 +50,7 @@
             tools:text="0.005" />
 
         <View
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/black" />
 

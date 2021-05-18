@@ -34,9 +34,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"/>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/size_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/coefficient_variation_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/variation_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 </layout>
